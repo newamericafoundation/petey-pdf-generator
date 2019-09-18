@@ -1,7 +1,7 @@
 from io import BytesIO
 
 import requests
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify
 from weasyprint import HTML
 
 app = Flask("newamerica-pdfgen")
@@ -15,21 +15,17 @@ def generate_pdf():
         if required_field not in request.json:
             abort(400)
 
+    # Generate PDF
     output = BytesIO()
     HTML(string=request.json['html'], base_url=request.json['base_url']).write_pdf(output)
 
     # Upload to S3
-    response = requests.post(request.json['s3_upload']['url'], data=request.json['s3_upload']['fields'], files={'file': (request.json['filename'], output.getvalue())})
+    s3_upload_response = requests.post(request.json['s3_upload']['url'], data=request.json['s3_upload']['fields'], files={'file': (request.json['filename'], output.getvalue())})
 
-    # Ping callback URL
-    if 'callback_url' in request.json:
-        data = {
-            'filename': request.json['filename'],
-            'filesize': len(output.getvalue()),
-        }
-        if 'request_id' in request.json:
-            data['request_id'] = request.json['request_id']
-        requests.post(request.json['callback_url'], json=data)
+    return jsonify({
+        'filesize': len(output.getvalue()),
+        's3_upload_response': s3_upload_response,
+    })
 
 if __name__ == "__main__":
     app.run()
