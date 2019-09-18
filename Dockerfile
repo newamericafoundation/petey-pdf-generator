@@ -7,9 +7,9 @@ COPY poetry.lock /app/
 
 WORKDIR app
 
+RUN poetry config settings.virtualenvs.create false
 RUN poetry install
 
 COPY app.py /app/
 
-CMD poetry run gunicorn app:app -b 0.0.0.0:5000
-EXPOSE 5000
+CMD poetry run gunicorn app:app -b 0.0.0.0:$PORT
