@@ -24,7 +24,7 @@ def generate_pdf():
 
     return jsonify({
         'filesize': len(output.getvalue()),
-        's3_upload_response': s3_upload_response.json(),
+        's3_upload_response_status_code': s3_upload_response.status_code,
     })
 
 if __name__ == "__main__":
