@@ -1,3 +1,4 @@
+import os
 from io import BytesIO
 
 import requests
@@ -8,6 +9,9 @@ app = Flask("newamerica-pdfgen")
 
 @app.route("/generate-pdf/", methods=["post"])
 def generate_pdf():
+    if request.args.get('token') != os.environ.get('AUTH_TOKEN'):
+        abort(403)
+
     if not request.json:
         abort(400)
 
