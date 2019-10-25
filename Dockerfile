@@ -12,4 +12,4 @@ RUN poetry install
 
 COPY app.py /app/
 
-CMD poetry run gunicorn app:app -b 0.0.0.0:$PORT
+CMD poetry run gunicorn app:app -b 0.0.0.0:$PORT -t 300 -w 4
