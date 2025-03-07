@@ -7,7 +7,7 @@ COPY poetry.lock /app/
 
 WORKDIR app
 
-RUN poetry config settings.virtualenvs.create false
+RUN poetry config virtualenvs.create false
 RUN poetry install
 
 COPY app.py /app/
