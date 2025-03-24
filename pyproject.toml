@@ -7,7 +7,7 @@ authors = ["Karl Hobley <karl@torchbox.com>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 flask = "^1.1"
-weasyprint = "^49.0"
+weasyprint = "^52.1"
 requests = "^2.22"
 boto3 = "^1.9"
 gunicorn = "^19.9"

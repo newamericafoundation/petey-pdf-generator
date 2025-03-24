@@ -738,13 +738,13 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "weasyprint"
-version = "49"
+version = "52.5"
 description = "The Awesome Document Factory"
 optional = false
-python-versions = ">= 3.5"
+python-versions = ">=3.6"
 files = [
-    {file = "WeasyPrint-49-py3-none-any.whl", hash = "sha256:db21a9bf1928155d3e33e4416173bd75db788c6409d8df67420b6983be571508"},
-    {file = "WeasyPrint-49.tar.gz", hash = "sha256:1f97453c8e9a07aad9a3a651028dc4026a545db484cc5d249a75b6620ed527d5"},
+    {file = "WeasyPrint-52.5-py3-none-any.whl", hash = "sha256:3433d657049a65d7d63f545fd71f5efa8aae7f05d24e49e01a757973fd3799f1"},
+    {file = "WeasyPrint-52.5.tar.gz", hash = "sha256:b37ea02d75ca04babd7becad7341426be332ae560d8f02d664bfa1e9afb18481"},
 ]
 
 [package.dependencies]
@@ -753,7 +753,8 @@ CairoSVG = ">=2.4.0"
 cffi = ">=0.6"
 cssselect2 = ">=0.1"
 html5lib = ">=0.999999999"
-Pyphen = ">=0.8"
+Pillow = ">=4.0.0"
+Pyphen = ">=0.9.1"
 setuptools = ">=39.2.0"
 tinycss2 = ">=1.0.0"
 
@@ -790,4 +791,4 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "0c95262f8bfad03280c056a0a24549cdd9cfe1de83ae49e39132734b8d45bc3b"
+content-hash = "9bcc3897991232347e1c106b16e660abcfe43a3e4a594f73a3f26e7c883626fa"
